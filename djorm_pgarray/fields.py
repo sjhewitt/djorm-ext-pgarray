@@ -139,7 +139,7 @@ class ArrayFormField(forms.Field):
             raise ValidationError(self.error_messages['invalid'])
 
     def prepare_value(self, value):
-        if value:
+        if value is not None:
             return self.delim.join(str(v) for v in value)
         else:
             return super(ArrayFormField, self).prepare_value(value)
